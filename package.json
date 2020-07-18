@@ -1,0 +1,22 @@
+{
+  "name": "sleep-tracker",
+  "version": "1.0.0",
+  "description": "tool for registering sleep",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tubaleviao/sleep-tracker.git"
+  },
+  "keywords": [
+    "sleep"
+  ],
+  "author": "Tubaleviao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tubaleviao/sleep-tracker/issues"
+  },
+  "homepage": "https://github.com/Tubaleviao/sleep-tracker#readme"
+}
