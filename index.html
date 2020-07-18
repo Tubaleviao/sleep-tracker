@@ -1,9 +1,10 @@
 <html>
     <header>
         <title>Sleep Tracker</title>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="jquery.js"></script>
         <script src="index.js"></script>
-		<link rel="stylesheet" href="index.css"/>
+        <link rel="stylesheet" href="index.css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     </header>
     <body>
         <p class="msg"></p>
@@ -15,21 +16,18 @@
             <input type="submit" value="Register Sleep" id="start" />
             <br/><br/><div id="startd"></div>
             <br/><div id="endd"></div><br/>
-            <p>
-                Created to control the amount of hours do you sleep every night/day.
-            </p>
             
             <div class="update">
                 Start Date:
                 <div class="startdate">
                     <input type="hidden" id="id" />
-                    Dia: <input id="sdate" type="date" /><br/>
-                    Hora: <input id="stime" type="time" />
-                </div><br/>
+                    <input id="sdate" type="date" />
+                    <input id="stime" type="time" />
+                </div><br/><br/>
                 End Date:
                 <div class="enddate">
-                    Dia: <input id="edate" type="date" /><br/>
-                    Hora: <input id="etime" type="time" />
+                    <input id="edate" type="date" />
+                    <input id="etime" type="time" />
                 </div><br/>
                 <input id="save" type="submit" value="Save"/>
                 <input id="del" type="submit" value="Delete"/>

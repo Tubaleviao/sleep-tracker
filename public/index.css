@@ -128,9 +128,69 @@ input{
 .update{
   display: none;
 }
-input[type="date"]{
-	width: 150px;
+input{
+	width: 9em;
+	padding: 0.5em;
 }
-input[type="time"]{
-	width: 150px;
+.startdate{
+	display: inline-flex;
+}
+.enddate{
+	display: inline-flex;
+}
+.stime{
+	width: fit-content;
+}
+input[type="date"] {
+	position: relative;
+	width: 11em;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	color: transparent;
+	background: none;
+	z-index: 1;
+}
+
+input[type="date"]:before {
+	color: transparent;
+	background: none;
+	display: block;
+	font-family: 'FontAwesome';
+	content: '\f073';
+	/* This is the calendar icon in FontAwesome */
+	width: 15px;
+	height: 20px;
+	position: absolute;
+	top: 8px;
+	right: 6px;
+	color: #0f0;
+}
+
+input[type="time"] {
+	position: relative;
+	margin-left: 1em;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+	color: transparent;
+	background: none;
+	z-index: 1;
+}
+
+input[type="time"]:before {
+	color: transparent;
+	background: none;
+	display: block;
+	font-family: 'FontAwesome';
+	content: '\f017';
+	width: 15px;
+	height: 20px;
+	position: absolute;
+	top: 8px;
+	right: 6px;
+	color: #0f0;
+}
+.enddate{
+	margin-bottom: 1em;
 }

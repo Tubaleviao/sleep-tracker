@@ -15,9 +15,9 @@ app.get('/', (req,res) => {
 io.on('connection', async socket => {
     let db = await connect()
     socket.on('save', function(data){
-        const {startdate, enddate} = data
-        let bid = data._id? new require('mongodb').ObjectID(data._id) : null
-        db.replaceOne({_id: bid}, data, {upsert:true}, success => {
+        if(data._id !== undefined) data._id = new require('mongodb').ObjectID(data._id)
+        else data._id = new require('mongodb').ObjectID()
+        db.replaceOne({_id: data._id}, data, {upsert:true}, success => {
             var now = new Date();
             var time = new Date(now.getFullYear(), now.getMonth(), 01);
             var monthMili = time.getTime();
