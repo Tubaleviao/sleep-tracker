@@ -1,0 +1,136 @@
+body {
+	font-family: "Courier New";
+	background-color: black; 
+	color:lime;
+	margin: 10px;
+}
+footer {
+	right: 0;
+	bottom: 0;
+	position: fixed;
+}
+form a{
+	font-size:14;
+	font-style: italic;
+}
+form a:hover{
+	font-weight: bold;
+	background-color: black;
+	color:lime
+	;
+}
+a:link {
+	color: #00ff00;
+	text-decoration:none;
+}
+a:visited {
+	color: #00CD00;
+	text-decoration:none;
+}
+a:hover {
+	background-color:lime;
+	color:black;
+}
+form{
+	float:right;
+}
+input{
+	background-color: black;
+	border:1px solid #00BB00;
+	color:lime;
+}
+.line{
+	border-bottom: 1px solid;
+	border-color: #003300;
+	height: 12px;
+}
+.csstable{
+	display: table;
+	float: right;
+	width: 160px;
+	margin-bottom: 50px;
+}
+.csscell1{
+	font-size: small;
+	display: table-cell; 
+	vertical-align: middle;
+	width: 50px;
+	height: 12px;
+}
+.csscell2{
+	font-size: small;
+	display: table-cell; 
+	width: 20px;
+	height: 12px;
+}
+.csscolumn{
+	height: 1px;
+	width: 20px;
+	opacity: 0;
+	background-color: lime;
+}
+.csscolumn:hover{
+	opacity: 0.9;
+}
+
+.line:hover{
+	background-color: #001100;
+}
+.popupContainer{
+	background-color: #001100;
+	display: block; 
+	position: fixed; 
+	opacity: 1; 
+	z-index: 11000; 
+	left: 50%; 
+	margin-left: -202px; 
+	top: 200px;
+}
+.popupHeader  {
+	background-color: #000000;
+	position: relative;
+	padding: 10px;
+	font-weight: bold;
+}
+.popupBody{
+	padding: 20px;
+}
+.lean_overlay {
+	position: fixed;
+	z-index:100;
+	top: 0px;
+	left: 0px;
+	height:100%;
+	width:100%;
+	background: #000;
+	display: none;
+	opacity: 0.5;
+}
+.menu{
+	float: left;
+	width: 20%;
+	word-wrap: break-word;
+}
+.ballon{
+	position: absolute;
+	border: solid;
+	border-width: 1px;
+	border-color: #0A2A0A;
+	width: 200px;
+	height: 100px;
+	background-color: #001100;
+	display: none;
+	line-height: 100px;
+}
+.msg{
+  display: none;
+}
+.update{
+  display: none;
+}
+input[type="date"]{
+	width: 150px;
+}
+input[type="time"]{
+	width: 150px;
+}
