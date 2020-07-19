@@ -214,4 +214,161 @@ $(function(){
 		$('.msg').text(msg)
 	})
   
+	// code for highlights
+  
+	$( ".csscell21").on( "mouseover", function() 
+	{$( ".csscell21").css( "background-color", "#002200" );});
+	 $( ".csscell21").on( "mouseout", function()  
+	{$( ".csscell21").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell22").on( "mouseover", function() 
+	{$( ".csscell22").css( "background-color", "#002200" );});
+	 $( ".csscell22").on( "mouseout", function()  
+	{$( ".csscell22").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell23").on( "mouseover", function() 
+	{$( ".csscell23").css( "background-color", "#002200" );});
+	 $( ".csscell23").on( "mouseout", function()  
+	{$( ".csscell23").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell24").on( "mouseover", function() 
+	{$( ".csscell24").css( "background-color", "#002200" );});
+	 $( ".csscell24").on( "mouseout", function()  
+	{$( ".csscell24").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell25").on( "mouseover", function() 
+	{$( ".csscell25").css( "background-color", "#002200" );});
+	 $( ".csscell25").on( "mouseout", function()  
+	{$( ".csscell25").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell26").on( "mouseover", function() 
+	{$( ".csscell26").css( "background-color", "#002200" );});
+	 $( ".csscell26").on( "mouseout", function()  
+	{$( ".csscell26").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell27").on( "mouseover", function() 
+	{$( ".csscell27").css( "background-color", "#002200" );});
+	 $( ".csscell27").on( "mouseout", function()  
+	{$( ".csscell27").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell28").on( "mouseover", function() 
+	{$( ".csscell28").css( "background-color", "#002200" );});
+	 $( ".csscell28").on( "mouseout", function()  
+	{$( ".csscell28").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell29").on( "mouseover", function() 
+	{$( ".csscell29").css( "background-color", "#002200" );});
+	 $( ".csscell29").on( "mouseout", function()  
+	{$( ".csscell29").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell210").on( "mouseover", function() 
+	{$( ".csscell210").css( "background-color", "#002200" );});
+	 $( ".csscell210").on( "mouseout", function()  
+	{$( ".csscell210").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell211").on( "mouseover", function() 
+	{$( ".csscell211").css( "background-color", "#002200" );});
+	 $( ".csscell211").on( "mouseout", function()  
+	{$( ".csscell211").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell212").on( "mouseover", function() 
+	{$( ".csscell212").css( "background-color", "#002200" );});
+	 $( ".csscell212").on( "mouseout", function()  
+	{$( ".csscell212").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell213").on( "mouseover", function() 
+	{$( ".csscell213").css( "background-color", "#002200" );});
+	 $( ".csscell213").on( "mouseout", function()  
+	{$( ".csscell213").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell214").on( "mouseover", function() 
+	{$( ".csscell214").css( "background-color", "#002200" );});
+	 $( ".csscell214").on( "mouseout", function()  
+	{$( ".csscell214").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell215").on( "mouseover", function() 
+	{$( ".csscell215").css( "background-color", "#002200" );});
+	 $( ".csscell215").on( "mouseout", function()  
+	{$( ".csscell215").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell216").on( "mouseover", function() 
+	{$( ".csscell216").css( "background-color", "#002200" );});
+	 $( ".csscell216").on( "mouseout", function()  
+	{$( ".csscell216").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell217").on( "mouseover", function() 
+	{$( ".csscell217").css( "background-color", "#002200" );});
+	 $( ".csscell217").on( "mouseout", function()  
+	{$( ".csscell217").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell218").on( "mouseover", function() 
+	{$( ".csscell218").css( "background-color", "#002200" );});
+	 $( ".csscell218").on( "mouseout", function()  
+	{$( ".csscell218").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell219").on( "mouseover", function() 
+	{$( ".csscell219").css( "background-color", "#002200" );});
+	 $( ".csscell219").on( "mouseout", function()  
+	{$( ".csscell219").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell220").on( "mouseover", function() 
+	{$( ".csscell220").css( "background-color", "#002200" );});
+	 $( ".csscell220").on( "mouseout", function()  
+	{$( ".csscell220").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell221").on( "mouseover", function() 
+	{$( ".csscell221").css( "background-color", "#002200" );});
+	 $( ".csscell221").on( "mouseout", function()  
+	{$( ".csscell221").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell222").on( "mouseover", function() 
+	{$( ".csscell222").css( "background-color", "#002200" );});
+	 $( ".csscell222").on( "mouseout", function()  
+	{$( ".csscell222").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell223").on( "mouseover", function() 
+	{$( ".csscell223").css( "background-color", "#002200" );});
+	 $( ".csscell223").on( "mouseout", function()  
+	{$( ".csscell223").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell224").on( "mouseover", function() 
+	{$( ".csscell224").css( "background-color", "#002200" );});
+	 $( ".csscell224").on( "mouseout", function()  
+	{$( ".csscell224").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell225").on( "mouseover", function() 
+	{$( ".csscell225").css( "background-color", "#002200" );});
+	 $( ".csscell225").on( "mouseout", function()  
+	{$( ".csscell225").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell226").on( "mouseover", function() 
+	{$( ".csscell226").css( "background-color", "#002200" );});
+	 $( ".csscell226").on( "mouseout", function()  
+	{$( ".csscell226").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell227").on( "mouseover", function() 
+	{$( ".csscell227").css( "background-color", "#002200" );});
+	 $( ".csscell227").on( "mouseout", function()  
+	{$( ".csscell227").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell228").on( "mouseover", function() 
+	{$( ".csscell228").css( "background-color", "#002200" );});
+	 $( ".csscell228").on( "mouseout", function()  
+	{$( ".csscell228").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell229").on( "mouseover", function() 
+	{$( ".csscell229").css( "background-color", "#002200" );});
+	 $( ".csscell229").on( "mouseout", function()  
+	{$( ".csscell229").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell230").on( "mouseover", function() 
+	{$( ".csscell230").css( "background-color", "#002200" );});
+	 $( ".csscell230").on( "mouseout", function()  
+	{$( ".csscell230").css( "background-color", "rgba(0,0,0,0)" );});
+	
+	 $( ".csscell231").on( "mouseover", function() 
+	{$( ".csscell231").css( "background-color", "#002200" );});
+	 $( ".csscell231").on( "mouseout", function()  
+	{$( ".csscell231").css( "background-color", "rgba(0,0,0,0)" );});
+	
 });  

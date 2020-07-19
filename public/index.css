@@ -50,7 +50,7 @@ input{
 }
 .menu{
 	float: left;
-	width: 20%;
+	width: auto;
 	word-wrap: break-word;
 }
 .update{
