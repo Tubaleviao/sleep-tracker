@@ -8,15 +8,26 @@ const url = `${process.env.MONGO_PROTOCOL
               }${process.env.MONGO_OPTIONS}`;
 const client = new mc(url, {useNewUrlParser: true, useUnifiedTopology: true,});
 
-  const connect = async () => {
+  const sleep = async () => {
     if(!db){
       try{
         const mdb = await client.connect()
-        db = mdb.db(process.env.MONGO_DB).collection('sleep')
+        db = mdb.db(process.env.MONGO_DB)
       }
       catch(e){console.error(e)}
     }
-    return db
+    return db.collection('sleep')
   }
 
-module.exports = {connect}  
+  const users = async () => {
+    if(!db){
+      try{
+        const mdb = await client.connect()
+        db = mdb.db(process.env.MONGO_DB)
+      }
+      catch(e){console.error(e)}
+    }
+    return db.collection('users')
+  }
+
+module.exports = {sleep, users}  

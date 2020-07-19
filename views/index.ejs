@@ -7,13 +7,18 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     </header>
     <body>
-        <p class="msg"></p>
+        <script>
+            var d = new Date();
+            montaTabela(d.getMonth(), d.getFullYear());
+            var getUser = () => <%-JSON.stringify(username)%>
+            var getToken = () => "<%=token%>"
+        </script>
 
         <div class="ballon">Choose a start date</div>
 
         <div class="menu">
             <br/>
-            <input type="submit" value="Register Sleep" id="start" />
+            <p>Click to choose a date </p>
             <br/><br/><div id="startd"></div>
             <br/><div id="endd"></div><br/>
             
@@ -24,6 +29,7 @@
                     <input id="sdate" type="date" />
                     <input id="stime" type="time" />
                 </div><br/><br/>
+                Comments: <textarea id="comments"></textarea><br/>
                 End Date:
                 <div class="enddate">
                     <input id="edate" type="date" />
@@ -34,18 +40,11 @@
             </div>
         </div>
 
+        <div class="msg"></div>
+
 
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var d = new Date();
-        montaTabela(d.getMonth(), d.getFullYear());
-    </script>
-    <script>
-        function getUser(){
-            var user = "tuba";
-            return(user);
-        }
-    </script>
+    
 
     </body>
 </html>

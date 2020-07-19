@@ -60,7 +60,7 @@ function toTime(timo){
 $(function(){
 	
 	var startdate, enddate, dia, hora, min, socket = io();
-	var mongodata = [];
+	var mongodata = [], token;
 	
 	function paintGrid(){
 		mongodata.forEach(function(trem){
@@ -72,22 +72,40 @@ $(function(){
 		});
 	}
 	
-  paintGrid();
+	paintGrid();
+
+	socket.emit('naps', {user: getUser()})
+
+	const tk = getToken()
+	if(tk !==""){
+		localStorage.setItem('tk', tk)
+		token = tk
+	}else{
+		const lctk = localStorage.getItem('tk')
+		if(lctk !== null){
+			token = lctk
+		}
+	}
   
-  socket.emit('naps', {user: getUser()})
-	
+	let sd = false
+	let ed = false
+
 	$('.csscolumn').click(function(){
-		if($('.ballon').css('display') != 'none' && $(this).css('opacity') != 1){
+		if($(this).css('opacity') != 1){
 			var d = new Date();
-			if($('#startd').text().length){
-				$('#endd').text($('.ballon').text());
-				$('.ballon').css('display', 'none');
+			if(sd){
+        ed = true
+				$('#endd').text('End Date: '+dia+' '+hora+':'+min);
         enddate = new Date(d.getFullYear(), d.getMonth(), dia, hora, min);	//take the page showing date
         let new_ob = {user: getUser(), startdate: startdate.getTime(), enddate: enddate.getTime()}
         console.log(new_ob)
-        socket.emit('save', new_ob);
+        socket.emit('save', {new_ob, token}); // add token here
+        dia = undefined
+        hora = undefined
+        min = undefined
 			}else{
-				$('#startd').text($('.ballon').text());
+        sd = true
+				$('#startd').text('Start Date: '+dia+' '+hora+':'+min);
 				startdate = new Date(d.getFullYear(), d.getMonth(), dia, hora, min);	//take the page showing date
 			}
 		}else{
@@ -96,47 +114,31 @@ $(function(){
 				socket.emit('take', id);
 			}
 		}
-	});
+	})
   
-  $('#start').click(function(){
-		$('#startd').empty();
-		$('#endd').empty();
-    $('.ballon').show();
-    $('.ballon').text('Choose a start date');	
-  });
-  
-  let sd = false
-  let ed = false
   $('.csscolumn').mouseover(function(){
-    var field = $(this).attr('id');
+    var field = $(this).attr('id')
 		
-    if(isNaN(field.slice(2, 3))){
-      hora = field.slice(1, 2);
-    }else{ hora = field.slice(1, 3); }
+    if(isNaN(field.slice(2, 3))) hora = field.slice(1, 2);
+    else hora = field.slice(1, 3)
 		
-		if(isNaN(field.slice(-2, -1))){
-			dia = field.slice(-1);
-		}else{ dia = field.slice(-2); }
+		if(isNaN(field.slice(-2, -1))) dia = field.slice(-1);
+		else dia = field.slice(-2)
 		
 		min = (field.slice(hora.length+2, hora.length+2+(field.length - (dia.length+hora.length+3)))-1) *5;
 		min = ("0"+min).slice(-2);
 		hora = ("0"+hora).slice(-2);
 		
-		if($('#startd').text().length){
-			$('.ballon').text('End Date: '+dia+' '+hora+':'+min);
-		}else{
-			$('.ballon').text('Start Date: '+dia+' '+hora+':'+min);
-    }
-    /*if(!sd) $('#startd').text('Start Date: '+dia+' '+hora+':'+min)
-    else $('#endd').text('End Date: '+dia+' '+hora+':'+min)*/
-    
+    if(!sd) $('#startd').text('Start Date: '+dia+' '+hora+':'+min)
+    else if(!ed) $('#endd').text('End Date: '+dia+' '+hora+':'+min)
+    $('.ballon').text(dia+' '+hora+':'+min)
   });
   
   $(document).on('mousemove', function(event){
-		if(event.pageX+200 >= $(window).width()){
-			$('.ballon').offset({left: event.pageX-210, top: event.pageY-110});
+		if(event.pageX+130 >= $(window).width()){
+			$('.ballon').offset({left: event.pageX-120, top: event.pageY-30});
 		}else{
-			$('.ballon').offset({left: event.pageX+10, top: event.pageY-110});
+			$('.ballon').offset({left: event.pageX+20, top: event.pageY-30});
 		}
 	});
 	
@@ -152,14 +154,15 @@ $(function(){
       _id: id, 
       user: getUser(), 
       startdate: s.getTime(), 
-      enddate: e.getTime()
+      enddate: e.getTime(),
+      comments: $('#comments').val(),
     }
-		socket.emit('save', new_ob);
+		socket.emit('save', {new_ob, token});
 		
   });
   
   let erase = (id, divs=[]) => {
-		socket.emit('del', id)
+		socket.emit('del', {id, token})
     divs.forEach( el => {
 			$('#'+el).css('opacity', '0')
 			$('#'+el).removeClass(id)
@@ -176,29 +179,39 @@ $(function(){
 	});
 	
 	socket.on('saved', function(records){
-    console.log(records)
-    if(records){
-      mongodata = records;
+		console.log(records)
+		if(records){
+		$('#startd').empty();
+		$('#endd').empty();
+		sd = false
+		ed = false
+		mongodata = records;
 			paintGrid();
-    }else{
-      $('.msg').text('ERROR OMG FUK').show(200).delay(1000).fadeOut(200);
-    }
-  });
-	
-	socket.on('took', function(nap){
-    console.log(nap)
-		var fdato = new Date(nap.startdate);
-		var ldato = new Date(nap.enddate);
-		fdato.setMonth(fdato.getMonth()+1);
-		ldato.setMonth(ldato.getMonth()+1);
-		
-		$('.update').show();
-		
-		$('#id').val(nap._id);
-		$('#sdate').val(toDate(fdato));
-		$("#stime").val(toTime(fdato));
-		$('#edate').val(toDate(ldato));
-		$("#etime").val(toTime(ldato));
+		}
+		$('.msg').empty()
 	});
+
+  let loadNap = nap => {
+    console.log(nap)
+    var fdato = new Date(nap.startdate);
+    var ldato = new Date(nap.enddate);
+    fdato.setMonth(fdato.getMonth()+1);
+    ldato.setMonth(ldato.getMonth()+1);
+    
+    $('.update').show();
+    
+    $('#id').val(nap._id);
+    $('#comments').val(nap.comments);
+    $('#sdate').val(toDate(fdato));
+    $("#stime").val(toTime(fdato));
+    $('#edate').val(toDate(ldato));
+    $("#etime").val(toTime(ldato));
+  }
+	
+	socket.on('took', loadNap)
+
+	socket.on('msg', msg => {
+		$('.msg').text(msg)
+	})
   
 });  

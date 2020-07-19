@@ -1,0 +1,21 @@
+<html>
+    <header>
+        <title>Sleep Tracker</title>
+        <script src="jquery.js"></script>
+        <link rel="stylesheet" href="index.css"/>
+    </header>
+    <body>
+        <style>input{margin:0.5em;}</style>
+        <% if(locals.msg){ %>
+            <div><%=msg%></div>
+        <% } %>
+        <div style="text-align: center; margin: 10em;" >
+            <h1>Welcome</h1>
+            <form action="go" method="POST">
+                <input name="username" type="username" id="username" placeholder="username...">
+                <input name="password" type="password" id="password" placeholder="password...">
+                <input type="submit" value="Go" id="go" />
+            </form>
+        </div>
+    </body>
+</html>

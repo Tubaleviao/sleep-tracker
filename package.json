@@ -20,9 +20,14 @@
   },
   "homepage": "https://github.com/Tubaleviao/sleep-tracker#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.3",
     "express": "^4.17.1",
     "html": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
     "socket.io": "^2.3.0"
   }
