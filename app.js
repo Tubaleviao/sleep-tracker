@@ -5,7 +5,7 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const {sleep, users} = require('./middle')
 const { sign, verify } = require('jsonwebtoken')
-const {compare} = require('bcrypt');
+const {compare, hash} = require('bcrypt');
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
@@ -32,12 +32,11 @@ app.post('/go', async (req,res) => {
         }else res.render('login', {msg: "User already exists and password is wrong"})
     }else{ // signup if don't
         const nu = {username:req.body.username}
-        nu.password = await bcrypt.hash(req.body.password, 8)
-        const {insertedId} = await db.insertOne()
+        nu.password = await hash(req.body.password, 8)
+        const {insertedId} = await db.insertOne(nu)
         nu._id = insertedId
         const token = sign(nu, process.env.secret)
-        res.header('token', token)
-        res.redirect('/'+nu.username)
+        res.cookie('token', token).redirect('/'+nu.username)
     }
 })
 app.get('/:user', (req,res) => {
