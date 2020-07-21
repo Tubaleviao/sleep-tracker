@@ -8,6 +8,7 @@ const { sign, verify } = require('jsonwebtoken')
 const {compare, hash} = require('bcrypt');
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const sk_code = require('./socket')
 
 app.use(cookieParser())
 app.use(cors({preflightContinue: true, allowedHeaders: ['token'], exposedHeaders: ['token']}))
@@ -46,56 +47,10 @@ app.get('/:user', (req,res) => {
 
 io.on('connection', async socket => {
     let db = await sleep()
-    socket.on('save', function({new_ob, token}){
-        if(token){
-            const comming = verify(token, process.env.secret)
-            if(comming.username === new_ob.user){
-                if(new_ob._id !== undefined) new_ob._id = new require('mongodb').ObjectID(new_ob._id)
-                else new_ob._id = new require('mongodb').ObjectID()
-                db.replaceOne({_id: new_ob._id}, new_ob, {upsert:true}, success => {
-                    var now = new Date();
-                    var time = new Date(now.getFullYear(), now.getMonth(), 01);
-                    var monthMili = time.getTime();
-                    db.find({user: new_ob.user, startdate: {$gte:monthMili}}).toArray((err, records)=>{
-                        if(err!=null){console.log(err);}
-                        else socket.emit('saved', records)
-                    })
-                })
-            } else socket.emit('msg', "you need to be the same user to do this")
-        } else socket.emit('msg', "you need to be authenticated to do this")
-        
-    });
-	socket.on('take', function(id){
-        let bid = new require('mongodb').ObjectID(id)
-        db.findOne({_id: bid}, function(err, nap){
-            if(err){console.log(err);}
-            else socket.emit('took', nap);
-        });
-    });
-    socket.on('naps', function(data){
-        var now = new Date();
-        var time = new Date(now.getFullYear(), now.getMonth(), 01);
-        var monthMili = time.getTime();
-        db.find({user: data.user, startdate: {$gte:monthMili}}).toArray((err, records)=>{
-            if(err!=null){console.log(err);}
-            else socket.emit('saved', records)
-        });
-    });
-	socket.on('del', async function({id, token}){
-        
-        let bid = new require('mongodb').ObjectID(id)
-        let record = await db.findOne({_id:bid})
-        if(token){
-            const comming = verify(token, process.env.secret)
-            if(comming.username === record.user){
-                db.deleteOne({_id:bid}, function(success){
-                    socket.emit('saved', success)
-                });
-            }else socket.emit('msg', "you need to be the same user delete it")
-        }else socket.emit('msg', "you need to be authenticated to delete this")
-        
-  });
-	
+    socket.on('save', data => sk_code.save(data, socket))
+	socket.on('take', id => sk_code.take(id, socket))
+    socket.on('naps', data => sk_code.naps(data, socket));
+	socket.on('del', data => sk_code.del(data, socket));
 })
 
 http.listen(port, () => console.log(`listening at ${port}`))
